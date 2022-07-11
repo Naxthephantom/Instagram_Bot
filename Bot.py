@@ -1,22 +1,26 @@
 
-from lib2to3.pgen2 import driver
 from time import sleep
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 
-Options = Options()
-Options.binary_location = ( "C:\Users\Public\Desktop\Brave.lnk" )
-driver_path = ( "C:\Users\odiin\Documents\chrome driver\chromedriver.exe" )
-driver = webdriver.Chrome(options = Options, executable_path = driver_path)
-
-browser = webdriver.chrome()
+browser = webdriver.Chrome(r"C:\Users\odiin\Documents\chrome driver\chromedriver.exe")
 browser.implicitly_wait(7)
 
-url = 'https:www.instagram.com/?hl=en'
+url = 'https://www.instagram.com/?hl=en'
 browser.get( url )
 
 login_link = browser.find_element_by_xpath("//a[text()='log in']")
 login_link.click()
+
+sleep(3)
+
+username_input = browser.find_element_by_css_selector("input[name='username']")
+password_input = browser.find_element_by_css_selector("input[name='password']")
+
+username_input.send_keys(" ")
+username_input.send_keys(" ")
+
+login_button = browser.find_element_by_xpath("//*[@id='loginForm']/div/div[3]")
+login_button.click()
 
 sleep(5)
 
