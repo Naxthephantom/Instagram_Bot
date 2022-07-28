@@ -18,8 +18,8 @@ sleep(7)
 username_input = browser.find_element_by_css_selector("input[name='username']")
 password_input = browser.find_element_by_css_selector("input[name='password']")
 
-username_input.send_keys(" nax.d.phantom ")
-password_input.send_keys(" Echezona2005 ")
+username_input.send_keys(" <your username> ")
+password_input.send_keys(" <your username> ")
 
 login_button = browser.find_element_by_xpath("//*[@id='loginForm']/div/div[3]")
 login_button.click()
