@@ -1,23 +1,35 @@
 
-#First of you'll need to install instapy
-#python -m pip install instapy
+from time import sleep
+from selenium import webdriver
 
-from instapy import Instapy
+browser = webdriver.Chrome( r'C:\Users\odiin\Documents\chrome driver\chromedriver.exe')
+browser.implicitly_wait(7)
 
-session = Instapy(username = " nax.d.phantom ", password = " Echezona2005 ")      #Replace the username and password with yours
-session.login()
-                                                                                  #This two lines of code does basically what the contents of Bot.py does
+url = 'https://www.instagram.com/?hl=en'
+browser.get( url )
 
-session.like_by_tags (['jordanbloodlines', 'travisxfragments'], amount = 5)       #Here gives the bot a list of tags to like and the number of posts to like for each tag
-session.set_by_follow(True, percentage = 50)                                      #Here has the bot follow fifty percent of the users whose posts it liked
-session.set_by_comment(true, percentage = 50)                                     #You can also leave comments on post by first enabling commenting which this line does
-session.set_cpmments(['fire', 'pretty cool', 'Nice', 'Dope!!'])                   # and this line tells the bot what kind of comments to leave
-session.set_dont_like(['naked', 'nsfw'])                                          #you can flag words so your bot won't interact with posts that match that discription
-session.end()
+sleep(10)
 
+login_link = browser.find_element_by_xpath("//a[text()='log in']")
+login_link.click()
 
-#In addition to simply logging in to your profil, instapy also checks your internet connection and the status of your
-# instagram servers.
-#Instapy also logs every action it takes, when you run the code you'll notic in your shell that it'll take note of 
-# the posts it liked as well as it's link, description, location and wether the bot commented on the post or followed the author
-#It also has a little delay after every action to prevent your profile from being banned on instagram
+sleep(7)
+
+username_input = browser.find_element_by_css_selector("input[name='username']")
+password_input = browser.find_element_by_css_selector("input[name='password']")
+
+username_input.send_keys(" <your username> ")
+password_input.send_keys(" <your username> ")
+
+login_button = browser.find_element_by_xpath("//*[@id='loginForm']/div/div[3]")
+login_button.click()
+
+sleep(5)
+
+browser.close()
+
+#Now this is the way one would normally open the instagram app on their browser and login into their instagram account.
+#This is a detailed code breaking down the process step by step.
+#But there is a method that is easier, shorter and faster.
+#By using instapy, all this can been shortend to a line of code.
+#Check the other python file for more information on using instapy.
